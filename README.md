@@ -35,7 +35,7 @@ Entidades principais:
 - ASP.NET Core Web API
 - Entity Framework Core
 - SQL Server Express
-- Visual Studio Core
+- Visual Studio
 - Swagger (OpenAPI)
 
 ---
@@ -55,7 +55,7 @@ Entidades principais:
 - Tickets podem ter apenas os status: Open, Resolved, Closed
 - Ao mudar para Resolved, a data de resolução é registrada
 - Ao mudar para Closed, a data de fechamento é registrada
-- Alterações de status geram registros no histórico (TicketEvent)
+- Alterações de status devem gerar registros no histórico (TicketEvent)
 
 ##  Testes
 
@@ -63,14 +63,14 @@ Entidades principais:
   
 ##  Histórico de Tickets (TicketEvent)
 
-Modelei a entidade `TicketEvent` com o objetivo de registrar o histórico de alterações de status dos tickets, sendo:
+A entidade `TicketEvent` foi modelada com o objetivo de registrar o histórico de alterações de status dos tickets, armazenando:
 
 - status anterior
 - novo status
 - data da alteração
 - atendente responsável
 
-A lógica da criação do histórico foi implementada na service de `Ticket`, sendo acionada sempre que ocorre uma mudança de status em um chamado.
+A lógica de criação do histórico foi implementada na camada de service de `Ticket`, sendo acionada sempre que ocorre uma mudança de status em um chamado.
 Por limitação de tempo para a finalização do desafio, a persistência completa do histórico não foi concluída, porém a arquitetura e as regras necessárias para sua implementação já estão definidas.
 
 ### Implementação prevista
