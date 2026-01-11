@@ -60,3 +60,21 @@ Entidades principais:
 ##  Testes
 
 - Todos os endpoints principais foram testados via Swagger.
+  
+##  Histórico de Tickets (TicketEvent)
+
+Modelei a entidade `TicketEvent` com o objetivo de registrar o histórico de alterações de status dos tickets, sendo:
+
+- status anterior
+- novo status
+- data da alteração
+- atendente responsável
+
+A lógica da criação do histórico foi implementada na service de `Ticket`, sendo acionada sempre que ocorre uma mudança de status em um chamado.
+Por limitação de tempo para a finalização do desafio, a persistência completa do histórico não foi concluída, porém a arquitetura e as regras necessárias para sua implementação já estão definidas.
+
+### Implementação prevista
+O resultado final consistiria em:
+- Garantir o mapeamento correto das chaves estrangeiras no Entity Framework
+- Persistir o `TicketEvent` no mesmo fluxo transacional da atualização do ticket
+- Disponibilizar um endpoint para consulta do histórico por ticket
